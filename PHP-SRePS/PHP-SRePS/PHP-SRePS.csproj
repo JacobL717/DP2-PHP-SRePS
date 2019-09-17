@@ -245,6 +245,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Sales.cshtml" />
+    <Content Include="Views\Home\Unauthorised.cshtml" />
+    <Content Include="Views\Shared\_NavBarPartial.cshtml" />
+    <Content Include="Views\Shared\_RestrictedNavBarPartial.cshtml" />
+    <Content Include="Views\Home\Restricted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

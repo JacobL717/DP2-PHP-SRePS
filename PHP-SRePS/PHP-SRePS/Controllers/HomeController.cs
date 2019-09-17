@@ -10,7 +10,16 @@ namespace PHP_SRePS.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            // need to change once I know what manager role is called
+            if (User.IsInRole("Manager") || User.IsInRole("SalesAssistant"))
+            {
+                return View("Index");
+            }
+            else
+            {
+                return View("Unauthorised");
+            }
+            
         }
 
         public ActionResult Sales()
@@ -29,9 +38,14 @@ namespace PHP_SRePS.Controllers
 
         public ActionResult Reporting()
         {
-            ViewBag.Message = "Application reporting page.";
-
-            return View();
+            if (User.IsInRole("Manager"))
+            {
+                return View();
+            }
+            else
+            {
+                return View("Restricted");
+            }
         }
     }
 }
