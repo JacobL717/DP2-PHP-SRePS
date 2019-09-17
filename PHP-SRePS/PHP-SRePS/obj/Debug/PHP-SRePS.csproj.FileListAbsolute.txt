@@ -103,3 +103,6 @@ C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP-SRePS.csp
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP-SRePS.csproj.CopyComplete
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP-SRePS.dll
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP-SRePS.pdb
+C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.InitialModel.resources
+C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP-SRePS.csproj.GenerateResource.cache
+C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.SeedUsers.resources
