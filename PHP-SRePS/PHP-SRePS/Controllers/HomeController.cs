@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PHP_SRePS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,22 @@ namespace PHP_SRePS.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
+
+        // need to move to a sales controller later
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+        //                                       
+
         public ActionResult Index()
         {
-            // need to change once I know what manager role is called
             if (User.IsInRole("Manager") || User.IsInRole("SalesAssistant"))
             {
                 return View("Index");
@@ -24,9 +38,11 @@ namespace PHP_SRePS.Controllers
 
         public ActionResult Sales()
         {
+            var items = _context.Items.ToList();
+
             ViewBag.Message = "Application sales page.";
 
-            return View();
+            return View(items);
         }
 
         public ActionResult Inventory()
