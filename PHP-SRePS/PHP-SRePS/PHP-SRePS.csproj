@@ -181,10 +181,20 @@
     <Compile Include="Migrations\201909180526202_SeedUsers.Designer.cs">
       <DependentUpon>201909180526202_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909190636193_AddSalesAndItemTables.cs" />
+    <Compile Include="Migrations\201909190636193_AddSalesAndItemTables.Designer.cs">
+      <DependentUpon>201909190636193_AddSalesAndItemTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909190649590_SeedItemData.cs" />
+    <Compile Include="Migrations\201909190649590_SeedItemData.Designer.cs">
+      <DependentUpon>201909190649590_SeedItemData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SalesTransaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -272,6 +282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909180526202_SeedUsers.resx">
       <DependentUpon>201909180526202_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909190636193_AddSalesAndItemTables.resx">
+      <DependentUpon>201909190636193_AddSalesAndItemTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909190649590_SeedItemData.resx">
+      <DependentUpon>201909190649590_SeedItemData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

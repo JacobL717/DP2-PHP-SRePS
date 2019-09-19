@@ -20,6 +20,9 @@ namespace PHP_SRePS.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<SalesTransaction> SalesTransactions { get; set; }
+        public DbSet<Item> Items { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
