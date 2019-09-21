@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +190,18 @@
     <Compile Include="Migrations\201909190649590_SeedItemData.Designer.cs">
       <DependentUpon>201909190649590_SeedItemData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909202349084_FixedSpellingErrorInSalesTransactionModel.cs" />
+    <Compile Include="Migrations\201909202349084_FixedSpellingErrorInSalesTransactionModel.Designer.cs">
+      <DependentUpon>201909202349084_FixedSpellingErrorInSalesTransactionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909210212230_ChangedSalesTransactionForeignKey.cs" />
+    <Compile Include="Migrations\201909210212230_ChangedSalesTransactionForeignKey.Designer.cs">
+      <DependentUpon>201909210212230_ChangedSalesTransactionForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909210230032_RemoveRequiredAttributeOnForeignKey.cs" />
+    <Compile Include="Migrations\201909210230032_RemoveRequiredAttributeOnForeignKey.Designer.cs">
+      <DependentUpon>201909210230032_RemoveRequiredAttributeOnForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -197,6 +210,7 @@
     <Compile Include="Models\SalesTransaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\NewSaleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -254,7 +268,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Sales.cshtml" />
+    <Content Include="Views\Sales\New.cshtml" />
     <Content Include="Views\Home\Unauthorised.cshtml" />
     <Content Include="Views\Shared\_NavBarPartial.cshtml" />
     <Content Include="Views\Shared\_RestrictedNavBarPartial.cshtml" />
@@ -288,6 +302,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909190649590_SeedItemData.resx">
       <DependentUpon>201909190649590_SeedItemData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909202349084_FixedSpellingErrorInSalesTransactionModel.resx">
+      <DependentUpon>201909202349084_FixedSpellingErrorInSalesTransactionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909210212230_ChangedSalesTransactionForeignKey.resx">
+      <DependentUpon>201909210212230_ChangedSalesTransactionForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909210230032_RemoveRequiredAttributeOnForeignKey.resx">
+      <DependentUpon>201909210230032_RemoveRequiredAttributeOnForeignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -216,3 +216,6 @@ D:\ProjectTools2\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP-SRePS.dll
 D:\ProjectTools2\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP-SRePS.pdb
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.AddSalesAndItemTables.resources
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.SeedItemData.resources
+C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.FixedSpellingErrorInSalesTransactionModel.resources
+C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.ChangedSalesTransactionForeignKey.resources
+C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.RemoveRequiredAttributeOnForeignKey.resources

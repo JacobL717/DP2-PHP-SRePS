@@ -1,0 +1,78 @@
+﻿@model PHP_SRePS.ViewModels.NewSaleViewModel
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>Add a new transaction</h1>
+
+    @using (Html.BeginForm("Create", "Sales"))
+    {
+    <div class="form-group">
+        @Html.LabelFor(i => i.SalesTransaction.ItemId)
+        @Html.DropDownListFor(i => i.SalesTransaction.ItemId, new SelectList(Model.Items, "ItemId", "Name"), "", new { @class = "form-control", @id = "selectedItem" })
+        @Html.ValidationMessageFor(i => i.SalesTransaction.ItemId)
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.SalesTransaction.Quantity)
+            @Html.TextBoxFor(i => i.SalesTransaction.Quantity, new { @class = "form-control", @id = "quantity", @type = "number" })
+            @Html.ValidationMessageFor(i => i.SalesTransaction.Quantity)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.SalesTransaction.TotalPrice)
+            @Html.TextBoxFor(i => i.SalesTransaction.TotalPrice, new { @class = "form-control", @id = "totalPrice" })
+            @Html.ValidationMessageFor(i => i.SalesTransaction.TotalPrice)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.SalesTransaction.Notes)
+            @Html.TextBoxFor(i => i.SalesTransaction.Notes, new { @class = "form-control" })
+        </div>
+        @Html.HiddenFor(i => i.SalesTransaction.Id)
+        <button type="submit" class="btn btn-primary">Save</button>
+    }
+
+</body>
+</html>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#selectedItem").on('change', function () {
+            var i = $(this).val();
+
+            if (i !== "") {
+                $.post("@Url.Action("GetPrice", "Sales")?id=" + i, function(res) {
+                    if (res.Success === "true") {
+                        $("#totalPrice").val(res.Data.Price);
+                        UpdateTotalPrice();
+
+                    } else {
+                        alert("Error getting data!");
+                    }
+                });
+            }
+        });
+    })
+
+    $(function () {
+        $("#quantity").on('change', function () {
+            UpdateTotalPrice();
+        })
+    })
+
+    function UpdateTotalPrice() {
+        var quantity = $("#quantity").val();
+        var totalPrice = $("#totalPrice").val();
+
+        if (quantity > 0) {
+            $("#totalPrice").val((quantity * totalPrice).toFixed(2));
+        }
+    }
+
+</script>
