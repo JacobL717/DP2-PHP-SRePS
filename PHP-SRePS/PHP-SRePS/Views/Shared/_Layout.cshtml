@@ -12,10 +12,12 @@
     @if (User.IsInRole("Manager"))
     {
         @Html.Partial("_NavBarPartial")
-    }
-    else
+    } else if (User.IsInRole("SalesAssistant"))
     {
         @Html.Partial("_RestrictedNavBarPartial")
+    } else
+    {
+        @Html.Partial("_NoAccessNavBarPartial")
     }
 
     <div class="container body-content">

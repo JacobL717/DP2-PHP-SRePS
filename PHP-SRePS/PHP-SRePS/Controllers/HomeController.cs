@@ -23,6 +23,7 @@ namespace PHP_SRePS.Controllers
             
         }
 
+        [Authorize]
         public ActionResult Inventory()
         {
             ViewBag.Message = "Application inventory page.";
@@ -30,6 +31,7 @@ namespace PHP_SRePS.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Reporting()
         {
             if (User.IsInRole("Manager"))

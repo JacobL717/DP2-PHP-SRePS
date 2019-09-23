@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace PHP_SRePS.Controllers
 {
+    [Authorize]
     public class SalesController : Controller
     {
         private ApplicationDbContext _context;

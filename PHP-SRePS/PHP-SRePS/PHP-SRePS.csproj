@@ -277,6 +277,7 @@
     <Content Include="Views\Shared\_NavBarPartial.cshtml" />
     <Content Include="Views\Shared\_RestrictedNavBarPartial.cshtml" />
     <Content Include="Views\Home\Restricted.cshtml" />
+    <Content Include="Views\Shared\_NoAccessNavBarPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
