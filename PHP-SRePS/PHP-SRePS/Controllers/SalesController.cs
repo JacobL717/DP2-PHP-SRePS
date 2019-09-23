@@ -58,7 +58,7 @@ namespace PHP_SRePS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(SaleTransactionFormViewModel sale)
+        public ActionResult Save(SaleTransactionFormViewModel sale)
         {
             if (!ModelState.IsValid)
             {
@@ -73,19 +73,31 @@ namespace PHP_SRePS.Controllers
 
             try
             {
-                sale.SalesTransaction.Date = DateTime.Now;
-                //sale.SalesTransaction.Item = _context.Items.Single(i => i.ItemId == sale.SalesTransaction.ItemId);
+                if (sale.SalesTransaction.Id == 0)
+                {
+                    sale.SalesTransaction.Date = DateTime.Now;
 
-                _context.SalesTransactions.Add(sale.SalesTransaction);
-                _context.SaveChanges();
+                    _context.SalesTransactions.Add(sale.SalesTransaction);
+                }
+                else
+                {
+                    var customerInDb = _context.SalesTransactions.Single(s => s.Id == sale.SalesTransaction.Id);
 
-                return RedirectToAction("New", "Sales");
+                    customerInDb.Item = sale.SalesTransaction.Item;
+                    customerInDb.ItemId = sale.SalesTransaction.ItemId;
+                    customerInDb.Notes = sale.SalesTransaction.Notes;
+                    customerInDb.Quantity = sale.SalesTransaction.Quantity;
+                    customerInDb.TotalPrice = sale.SalesTransaction.TotalPrice;
+                }                
             }
             catch
             {
                 return View("Index", "Home");
             }
-            
+
+            _context.SaveChanges();
+
+            return RedirectToAction("New", "Sales");
         }
 
         public ActionResult Edit(int id)
