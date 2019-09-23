@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201909210230032_RemoveRequiredAttributeOnForeignKey.Designer.cs">
       <DependentUpon>201909210230032_RemoveRequiredAttributeOnForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909230713175_SeedSalesTransactions.cs" />
+    <Compile Include="Migrations\201909230713175_SeedSalesTransactions.Designer.cs">
+      <DependentUpon>201909230713175_SeedSalesTransactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -311,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909210230032_RemoveRequiredAttributeOnForeignKey.resx">
       <DependentUpon>201909210230032_RemoveRequiredAttributeOnForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909230713175_SeedSalesTransactions.resx">
+      <DependentUpon>201909230713175_SeedSalesTransactions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

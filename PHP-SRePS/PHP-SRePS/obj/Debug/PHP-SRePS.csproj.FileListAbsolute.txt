@@ -219,3 +219,4 @@ C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Mig
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.FixedSpellingErrorInSalesTransactionModel.resources
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.ChangedSalesTransactionForeignKey.resources
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.RemoveRequiredAttributeOnForeignKey.resources
+C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.SeedSalesTransactions.resources
