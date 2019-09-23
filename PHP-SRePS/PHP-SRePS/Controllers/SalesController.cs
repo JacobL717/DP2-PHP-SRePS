@@ -32,13 +32,13 @@ namespace PHP_SRePS.Controllers
         public ActionResult New()
         {
             var items = _context.Items.ToList();
-            var viewModel = new NewSaleViewModel
+            var viewModel = new SaleTransactionFormViewModel
             {
                 SalesTransaction = new SalesTransaction(),
                 Items = items
             };
 
-            return View(viewModel);
+            return View("SaleTransactionForm", viewModel);
         }
 
         public ActionResult GetPrice(string id)
@@ -57,11 +57,11 @@ namespace PHP_SRePS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(NewSaleViewModel sale)
+        public ActionResult Create(SaleTransactionFormViewModel sale)
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new NewSaleViewModel
+                var viewModel = new SaleTransactionFormViewModel
                 {
                     Items = _context.Items.ToList(),
                     SalesTransaction = sale.SalesTransaction
@@ -85,6 +85,24 @@ namespace PHP_SRePS.Controllers
                 return View("Index", "Home");
             }
             
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var salesTransaction = _context.SalesTransactions.SingleOrDefault(s => s.Id == id);
+
+            if (salesTransaction == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new SaleTransactionFormViewModel
+            {
+                SalesTransaction = salesTransaction,
+                Items = _context.Items.ToList()
+            };
+
+            return View("SaleTransactionForm", viewModel);
         }
     }
 }

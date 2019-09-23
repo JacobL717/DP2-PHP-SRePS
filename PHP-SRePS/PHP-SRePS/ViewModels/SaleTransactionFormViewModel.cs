@@ -6,7 +6,7 @@ using System.Web;
 
 namespace PHP_SRePS.ViewModels
 {
-    public class NewSaleViewModel
+    public class SaleTransactionFormViewModel
     {
         public SalesTransaction SalesTransaction { get; set; }
         public IEnumerable<Item> Items { get; set; }
