@@ -6,7 +6,18 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script>
+            function goBack() {
 
+                window.history.back();
+            }
+    </script>
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px 10px;
+        }
+    </style>
 </head>
 <body>
     @if (User.IsInRole("Manager"))
