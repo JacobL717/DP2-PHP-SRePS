@@ -120,11 +120,16 @@ namespace PHP_SRePS.Controllers
 
         public ActionResult SalesHistory()
         {
-            var items = _context.SalesTransactions.ToList();
+            var viewModel = new TransactionHistoryViewModel
+            {
+                SalesTransactions = _context.SalesTransactions.ToList(),
+                Items = _context.Items.ToList()
+            };
 
+            
             ViewBag.Message = "Application sales history page.";
 
-            return View(items);
+            return View(viewModel);
         }
     }
 }

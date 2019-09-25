@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PHP_SRePS.Models.SalesTransaction>
+﻿@model PHP_SRePS.ViewModels.TransactionHistoryViewModel
 
 
 @using System.Collections.Generic;
@@ -29,12 +29,12 @@
                                     <th></th>
                                 }
                             </tr>
-                            @foreach (var SalesTransaction in Model)
+                            @foreach (var SalesTransaction in Model.SalesTransactions)
                         {
                         <tr>
                             <td>@SalesTransaction.Id</td>
                             <td>@SalesTransaction.ItemId</td>
-                            <td>@Html.DisplayFor(model => SalesTransaction.ItemId)</td>
+                            <td>@Html.DisplayFor(model => SalesTransaction.Item.Name)</td>
                             <td>@SalesTransaction.Quantity</td>
                             <td>@SalesTransaction.TotalPrice</td>
                             <td>@SalesTransaction.Notes</td>
