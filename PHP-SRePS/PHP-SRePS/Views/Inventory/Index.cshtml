@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Inventory Page";
+}
+
+<div class="jumbotron">
+    <h3>Welcome to Inventory!</h3>
+    <hr />
+    <h5>What would you like to do?</h5>
+    <li>@Html.ActionLink("Add a new item to the inventory", "New", "Inventory")</li>
+    <li>@Html.ActionLink("View inventory", "InventoryList", "Inventory")</li>
+</div>
+

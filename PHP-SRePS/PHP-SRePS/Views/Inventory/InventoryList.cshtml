@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PHP_SRePS.Models.Item>
+
+
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Web;
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="jumbotron">
+        <form>
+            <fieldset>
+                <fieldset>
+                    <legend>Inventory List</legend>
+
+                    <p>
+                        <table>
+                            <tr>
+                                <th>Item Code</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity On Hand</th>
+                                <th>ItemNotes</th>
+                                @if (User.IsInRole("Manager"))
+                                {
+                                    <th></th>
+                                }
+                            </tr>
+                            @foreach (var SalesTransaction in Model)
+                            {
+                        <tr>
+                            <td>@SalesTransaction.ItemId</td>
+                            <td>@SalesTransaction.Name</td>
+                            <td>@SalesTransaction.Price</td>
+                            <td>@SalesTransaction.QuantityOnHand</td>
+                            <td>@SalesTransaction.ItemNotes</td>
+                            @if (User.IsInRole("Manager"))
+                            {
+                                <td><button>Edit</button></td>
+                            }
+                        </tr>
+                            }
+                        </table>
+                    </p>
+                </fieldset>
+            </fieldset>
+        </form>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+     </div>
+</body>
+</html>
