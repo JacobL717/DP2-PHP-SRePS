@@ -28,5 +28,6 @@ namespace PHP_SRePS.Models
         public DateTime Date { get; set; }
 
         public string Notes { get; set; }
+
     }
 }

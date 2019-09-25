@@ -117,5 +117,14 @@ namespace PHP_SRePS.Controllers
 
             return View("SaleTransactionForm", viewModel);
         }
+
+        public ActionResult SalesHistory()
+        {
+            var items = _context.SalesTransactions.ToList();
+
+            ViewBag.Message = "Application sales history page.";
+
+            return View(items);
+        }
     }
 }

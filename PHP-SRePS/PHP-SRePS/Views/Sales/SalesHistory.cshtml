@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PHP_SRePS.Models.SalesTransaction>
+
+
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Web;
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="jumbotron">
+        <form>
+            <fieldset>
+                <fieldset>
+                    <legend>Sales History</legend>
+
+                    <p>
+                        <table>
+                            <tr>
+                                <th>Sale ID</th>
+                                <th>Item ID</th>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>Notes</th>
+                                @if (User.IsInRole("Manager"))
+                                {
+                                    <th></th>
+                                    <th></th>
+                                }
+                            </tr>
+                            @foreach (var SalesTransaction in Model)
+                        {
+                        <tr>
+                            <td>@SalesTransaction.Id</td>
+                            <td>@SalesTransaction.ItemId</td>
+                            <td>@Html.DisplayFor(model => SalesTransaction.ItemId)</td>
+                            <td>@SalesTransaction.Quantity</td>
+                            <td>@SalesTransaction.TotalPrice</td>
+                            <td>@SalesTransaction.Notes</td>
+                            @if (User.IsInRole("Manager"))
+                            {
+                                <td><button>Edit</button></td>
+                                <td><button>Delete</button></td>
+                            }
+                        </tr>
+                        }
+                        </table>
+                    </p>
+                </fieldset>
+            </fieldset>
+        </form>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+</body>
+</html>
