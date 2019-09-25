@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Sales Page";
+}
+
+    <div class="jumbotron">
+        <h3>Welcome to Sales!</h3>
+        <hr />
+        <h5>What would you like to do?</h5>
+        <li>@Html.ActionLink("Add a new sales transaction", "New", "Sales")</li>
+        <li>@Html.ActionLink("View sales history", "SalesHistory", "Sales")</li>
+    </div>
+
