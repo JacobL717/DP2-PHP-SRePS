@@ -9,42 +9,44 @@
 <html>
 <body>
     <div class="jumbotron">
-        <form>
+        <form class="form-group">
             <fieldset>
                 <fieldset>
                     <legend>Sales History</legend>
 
                     <p>
-                        <table>
-                            <tr>
-                                <th>Sale ID</th>
-                                <th>Item ID</th>
-                                <th>Item</th>
-                                <th>Quantity</th>
-                                <th>Total Price</th>
-                                <th>Notes</th>
-                                @if (User.IsInRole("Manager"))
-                                {
-                                    <th></th>
-                                    <th></th>
-                                }
-                            </tr>
+                        <table class="table table-bordered table-hover ">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Sale ID</th>
+                                    <th>Item ID</th>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Total Price</th>
+                                    <th>Notes</th>
+                                    @if (User.IsInRole("Manager"))
+                                    {
+                                        <th></th>
+                                        <th></th>
+                                    }
+                                </tr>
+                            </thead>
                             @foreach (var SalesTransaction in Model.SalesTransactions)
-                        {
-                        <tr>
-                            <td>@SalesTransaction.Id</td>
-                            <td>@SalesTransaction.ItemId</td>
-                            <td>@Html.DisplayFor(model => SalesTransaction.Item.Name)</td>
-                            <td>@SalesTransaction.Quantity</td>
-                            <td>@SalesTransaction.TotalPrice</td>
-                            <td>@SalesTransaction.Notes</td>
-                            @if (User.IsInRole("Manager"))
                             {
-                                <td><button>Edit</button></td>
-                                <td><button>Delete</button></td>
+                                <tr>
+                                    <td>@SalesTransaction.Id</td>
+                                    <td>@SalesTransaction.ItemId</td>
+                                    <td>@Html.DisplayFor(model => SalesTransaction.Item.Name)</td>
+                                    <td>@SalesTransaction.Quantity</td>
+                                    <td>@SalesTransaction.TotalPrice</td>
+                                    <td>@SalesTransaction.Notes</td>
+                                    @if (User.IsInRole("Manager"))
+                                    {
+                                        <td>@Html.ActionLink("Edit", "Edit", "Sales", new { id = SalesTransaction.Id }, new { @class = "btn btn-primary" })</td>
+                                        <td>@Html.ActionLink("Delete", "Delete", "Sales", new { id = SalesTransaction.Id }, new { @class = "btn btn-danger" })</td>
+                                    }
+                                </tr>
                             }
-                        </tr>
-                        }
                         </table>
                     </p>
                 </fieldset>

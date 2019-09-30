@@ -92,12 +92,12 @@ namespace PHP_SRePS.Controllers
             }
             catch
             {
-                return View("Index", "Home");
+                return View("SalesHistory", "Sales");
             }
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Sales");
+            return RedirectToAction("SalesHistory", "Sales");
         }
 
         public ActionResult Edit(int id)
