@@ -1,0 +1,38 @@
+﻿@model PHP_SRePS.Models.Item
+
+<!DOCTYPE html>
+<html>  
+<body>
+
+    <h1>Add a new transaction</h1>
+
+    @using (Html.BeginForm("Save", "Inventory"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(i => i.ItemId)
+            @Html.TextBoxFor(i => i.ItemId, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.ItemId)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.Name)
+            @Html.TextBoxFor(i => i.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.Name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.Price)
+            @Html.TextBoxFor(i => i.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.Price)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.QuantityOnHand)
+            @Html.TextBoxFor(i => i.QuantityOnHand, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.ItemNotes)
+            @Html.TextBoxFor(i => i.ItemNotes, new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    }
+
+</body>
+</html>

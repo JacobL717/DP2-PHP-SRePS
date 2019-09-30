@@ -34,7 +34,35 @@ namespace PHP_SRePS.Controllers
             return View(items);
         }
 
+        public ActionResult New()
+        {
+            var item = new Item();
+
+            return View("ItemForm", item);
+        }
        
+        [HttpPost]
+        public ActionResult Save(Item item)
+        {
+            var itemInDb = _context.Items.SingleOrDefault(i => i.ItemId == item.ItemId);
+
+            if(itemInDb == null)
+            {
+                _context.Items.Add(item);
+            }
+            else
+            {
+                itemInDb.ItemId = item.ItemId;
+                itemInDb.Name = item.Name;
+                itemInDb.Price = item.Price;
+                itemInDb.QuantityOnHand = item.QuantityOnHand;
+                itemInDb.ItemNotes = item.ItemNotes;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("InventoryList", "Inventory");
+        }
 
         public ActionResult Edit(string id)
         {
