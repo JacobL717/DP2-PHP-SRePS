@@ -68,7 +68,7 @@ namespace PHP_SRePS.Controllers
         {
             var item = _context.Items.SingleOrDefault(i => i.ItemId == id);
 
-            return View();
+            return View("ItemForm", item);
         }
     }
 }
