@@ -76,18 +76,21 @@ namespace PHP_SRePS.Controllers
                 if (sale.SalesTransaction.Id == 0)
                 {
                     sale.SalesTransaction.Date = DateTime.Now;
-
                     _context.SalesTransactions.Add(sale.SalesTransaction);
+
+                    var itemInTx = _context.Items.Single(i => i.ItemId == sale.SalesTransaction.ItemId);
+
+                    itemInTx.QuantityOnHand -= sale.SalesTransaction.Quantity;
                 }
                 else
                 {
-                    var customerInDb = _context.SalesTransactions.Single(s => s.Id == sale.SalesTransaction.Id);
+                    var saleInDb = _context.SalesTransactions.Single(s => s.Id == sale.SalesTransaction.Id);
 
-                    customerInDb.Item = sale.SalesTransaction.Item;
-                    customerInDb.ItemId = sale.SalesTransaction.ItemId;
-                    customerInDb.Notes = sale.SalesTransaction.Notes;
-                    customerInDb.Quantity = sale.SalesTransaction.Quantity;
-                    customerInDb.TotalPrice = sale.SalesTransaction.TotalPrice;
+                    saleInDb.Item = sale.SalesTransaction.Item;
+                    saleInDb.ItemId = sale.SalesTransaction.ItemId;
+                    saleInDb.Notes = sale.SalesTransaction.Notes;
+                    saleInDb.Quantity = sale.SalesTransaction.Quantity;
+                    saleInDb.TotalPrice = sale.SalesTransaction.TotalPrice;
                 }                
             }
             catch
