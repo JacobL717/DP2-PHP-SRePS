@@ -16,7 +16,7 @@
 
                     <p>
                         <table class="table table-bordered table-hover ">
-                            <thead class="thead-dark">
+                            <thead>
                                 <tr>
                                     <th>Sale ID</th>
                                     <th>Item ID</th>
@@ -52,7 +52,7 @@
                 </fieldset>
             </fieldset>
         </form>
-        @Html.ActionLink("Go Back", "Index", "Sales", null, new { @class = "btn btn-primary"} )
+        <button onclick="goBack()">Go Back</button>
     </div>
 </body>
 </html>

@@ -1,39 +1,46 @@
-﻿using System;
+﻿using PHP_SRePS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Web;
+using System.Web.Mvc;
 
 namespace PHP_SRePS.Controllers
 {
-    public class InventoryController : ApiController
+    public class InventoryController : Controller
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        private ApplicationDbContext _context;
+
+        public InventoryController()
         {
-            return new string[] { "value1", "value2" };
+            _context = new ApplicationDbContext();
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        protected override void Dispose(bool disposing)
         {
-            return "value";
+            _context.Dispose();
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        // GET: Inventory
+        public ActionResult Index()
         {
+            return View();
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public ActionResult InventoryList()
         {
+            var items = _context.Items.ToList();
+
+            return View(items);
         }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
+       
+
+        public ActionResult Edit(string id)
         {
+            var item = _context.Items.SingleOrDefault(i => i.ItemId == id);
+
+            return View();
         }
     }
 }

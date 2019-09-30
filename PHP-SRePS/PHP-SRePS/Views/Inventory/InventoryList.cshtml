@@ -15,7 +15,7 @@
                     <legend>Inventory List</legend>
 
                     <p>
-                        <table>
+                        <table class="table table-bordered table-hover">
                             <tr>
                                 <th>Item Code</th>
                                 <th>Name</th>
@@ -27,17 +27,17 @@
                                     <th></th>
                                 }
                             </tr>
-                            @foreach (var SalesTransaction in Model)
+                            @foreach (var item in Model)
                             {
                         <tr>
-                            <td>@SalesTransaction.ItemId</td>
-                            <td>@SalesTransaction.Name</td>
-                            <td>@SalesTransaction.Price</td>
-                            <td>@SalesTransaction.QuantityOnHand</td>
-                            <td>@SalesTransaction.ItemNotes</td>
+                            <td>@item.ItemId</td>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>@item.QuantityOnHand</td>
+                            <td>@item.ItemNotes</td>
                             @if (User.IsInRole("Manager"))
                             {
-                                <td><button>Edit</button></td>
+                                <td>@Html.ActionLink("Edit", "Edit", "Inventory", new { id = item.ItemId }, new { @class = "btn btn-primary" })</td>
                             }
                         </tr>
                             }
