@@ -97,7 +97,7 @@ namespace PHP_SRePS.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("New", "Sales");
+            return RedirectToAction("Index", "Sales");
         }
 
         public ActionResult Edit(int id)

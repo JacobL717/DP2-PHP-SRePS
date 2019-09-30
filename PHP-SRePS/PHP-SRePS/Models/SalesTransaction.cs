@@ -13,6 +13,7 @@ namespace PHP_SRePS.Models
         // foreign key
         public Item Item { get; set; }
 
+        [Required]
         [Display(Name = "Item")]
         public string ItemId { get; set; }
 
