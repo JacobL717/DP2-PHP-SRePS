@@ -52,7 +52,7 @@
                 </fieldset>
             </fieldset>
         </form>
-        <button onclick="goBack()">Go Back</button>
+        @Html.ActionLink("Go Back", "Index", "Sales", null, new { @class = "btn btn-primary"} )
     </div>
 </body>
 </html>

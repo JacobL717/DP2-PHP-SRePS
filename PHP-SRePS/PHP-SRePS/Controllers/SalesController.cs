@@ -118,6 +118,22 @@ namespace PHP_SRePS.Controllers
             return View("SaleTransactionForm", viewModel);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var salesTransaction = _context.SalesTransactions.SingleOrDefault(s => s.Id == id);
+
+            if(salesTransaction == null)
+            {
+                return HttpNotFound();
+            }
+
+            _context.SalesTransactions.Remove(salesTransaction);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("SalesHistory", "Sales");
+        }
+
         public ActionResult SalesHistory()
         {
             var viewModel = new TransactionHistoryViewModel
