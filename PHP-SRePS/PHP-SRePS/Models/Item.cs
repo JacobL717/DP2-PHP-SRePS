@@ -8,7 +8,7 @@ namespace PHP_SRePS.Models
 {
     public class Item
     {
-        public string ItemId { get; set; }
+        public int ItemId { get; set; }
         [Required]
         public int QuantityOnHand { get; set; }
         [Required]

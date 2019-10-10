@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201909300030156_MadeItemIdRequiredFieldForSalesTransaction.Designer.cs">
       <DependentUpon>201909300030156_MadeItemIdRequiredFieldForSalesTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910100542300_ChangeItemIdToInt.cs" />
+    <Compile Include="Migrations\201910100542300_ChangeItemIdToInt.Designer.cs">
+      <DependentUpon>201910100542300_ChangeItemIdToInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -342,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909300030156_MadeItemIdRequiredFieldForSalesTransaction.resx">
       <DependentUpon>201909300030156_MadeItemIdRequiredFieldForSalesTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910100542300_ChangeItemIdToInt.resx">
+      <DependentUpon>201910100542300_ChangeItemIdToInt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

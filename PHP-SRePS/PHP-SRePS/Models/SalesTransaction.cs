@@ -15,7 +15,7 @@ namespace PHP_SRePS.Models
 
         [Required]
         [Display(Name = "Item")]
-        public string ItemId { get; set; }
+        public int ItemId { get; set; }
 
         [Required]
         [Range(1,15)]

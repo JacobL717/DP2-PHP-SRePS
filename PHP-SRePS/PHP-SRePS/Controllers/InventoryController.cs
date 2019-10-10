@@ -64,14 +64,14 @@ namespace PHP_SRePS.Controllers
             return RedirectToAction("InventoryList", "Inventory");
         }
 
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             var item = _context.Items.SingleOrDefault(i => i.ItemId == id);
 
             return View("ItemForm", item);
         }
 
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
             var item = _context.Items.SingleOrDefault(i => i.ItemId == id);
 

@@ -347,3 +347,5 @@ C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\bin\System.Net.Http.For
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\bin\System.Web.Http.xml
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\bin\System.Web.Http.WebHost.xml
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.MadeItemIdRequiredFieldForSalesTransaction.resources
+C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.ChangeItemIdToInt.resources
+C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.ChangedItemIdToAutoIncrement.resources

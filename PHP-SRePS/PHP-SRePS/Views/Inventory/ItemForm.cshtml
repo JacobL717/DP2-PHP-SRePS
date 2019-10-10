@@ -9,11 +9,6 @@
     @using (Html.BeginForm("Save", "Inventory"))
     {
         <div class="form-group">
-            @Html.LabelFor(i => i.ItemId)
-            @Html.TextBoxFor(i => i.ItemId, new { @class = "form-control" })
-            @Html.ValidationMessageFor(i => i.ItemId)
-        </div>
-        <div class="form-group">
             @Html.LabelFor(i => i.Name)
             @Html.TextBoxFor(i => i.Name, new { @class = "form-control" })
             @Html.ValidationMessageFor(i => i.Name)
@@ -31,6 +26,7 @@
             @Html.LabelFor(i => i.ItemNotes)
             @Html.TextBoxFor(i => i.ItemNotes, new { @class = "form-control" })
         </div>
+        @Html.HiddenFor(i => i.ItemId)
         <button type="submit" class="btn btn-primary">Save</button>
     }
 

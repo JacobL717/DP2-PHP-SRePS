@@ -42,9 +42,9 @@ namespace PHP_SRePS.Controllers
             return View("SaleTransactionForm", viewModel);
         }
 
-        public ActionResult GetPrice(string id)
+        public ActionResult GetPrice(int id)
         {
-            if (id != null)
+            if (id != 0)
             {
                 var item = _context.Items.SingleOrDefault(i => i.ItemId == id);
 
