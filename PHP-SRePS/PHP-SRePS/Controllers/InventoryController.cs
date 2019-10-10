@@ -70,5 +70,21 @@ namespace PHP_SRePS.Controllers
 
             return View("ItemForm", item);
         }
+
+        public ActionResult Delete(string id)
+        {
+            var item = _context.Items.SingleOrDefault(i => i.ItemId == id);
+
+            if(item == null)
+            {
+                return HttpNotFound();
+            }
+
+            _context.Items.Remove(item);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("InventoryList", "Inventory");
+        }
     }
 }

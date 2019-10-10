@@ -38,6 +38,7 @@
                             @if (User.IsInRole("Manager"))
                             {
                                 <td>@Html.ActionLink("Edit", "Edit", "Inventory", new { id = item.ItemId }, new { @class = "btn btn-primary" })</td>
+                                <td>@Html.ActionLink("Delete", "Delete", "Inventory", new { id = item.ItemId }, new { @class = "btn btn-danger" })</td>
                             }
                         </tr>
                             }
