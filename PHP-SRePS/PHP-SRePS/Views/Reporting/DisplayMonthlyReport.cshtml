@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Reporting Page";
+}
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="jumbotron">
+        <h3>Monthly Sales Report</h3>
+        <hr />
+        <h4>Month: June 2019</h4>
+        <form>
+            <fieldset>
+                <fieldset>
+                    <legend>Inventory List</legend>
+
+                    <p>
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Item ID</th>
+                                <th>Item Code</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>Date</th>
+                                <th>Notes</th>
+                                @if (User.IsInRole("Manager"))
+                                {
+                                    <th></th>
+                                }
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.ItemId</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.TotalPrice</td>
+                                    <td>@item.Date</td>
+                                    <td>@item.Notes</td>
+
+                                    @if (User.IsInRole("Manager"))
+                                    {
+                                        <td>@Html.ActionLink("Edit", "Edit", "Inventory", new { id = item.ItemId }, new { @class = "btn btn-primary" })</td>
+                                        <td>@Html.ActionLink("Delete", "Delete", "Inventory", new { id = item.ItemId }, new { @class = "btn btn-danger" })</td>
+                                    }
+                                </tr>
+                            }
+                        </table>
+                    </p>
+                </fieldset>
+            </fieldset>
+        </form>
+        @Html.ActionLink("Go Back", "Index", "Inventory", null, new { @class = "btn btn-primary" })
+    </div>
+    </div>
+</body>
+</html>
