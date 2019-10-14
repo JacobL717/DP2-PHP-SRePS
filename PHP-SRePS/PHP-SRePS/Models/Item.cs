@@ -16,5 +16,6 @@ namespace PHP_SRePS.Models
         [Required]
         public string Name { get; set; }
         public string ItemNotes { get; set; }
+        public string Tag { get; set; }
     }
 }
