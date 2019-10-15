@@ -26,6 +26,10 @@
             @Html.LabelFor(i => i.ItemNotes)
             @Html.TextBoxFor(i => i.ItemNotes, new { @class = "form-control" })
         </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.Tag)
+            @Html.TextBoxFor(i => i.Tag, new { @class = "form-control" })
+        </div>
         @Html.HiddenFor(i => i.ItemId)
         <button type="submit" class="btn btn-primary">Save</button>
     }

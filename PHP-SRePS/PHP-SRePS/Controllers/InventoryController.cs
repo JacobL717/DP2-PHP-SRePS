@@ -57,6 +57,7 @@ namespace PHP_SRePS.Controllers
                 itemInDb.Price = item.Price;
                 itemInDb.QuantityOnHand = item.QuantityOnHand;
                 itemInDb.ItemNotes = item.ItemNotes;
+                itemInDb.Tag = item.Tag;
             }
 
             _context.SaveChanges();

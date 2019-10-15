@@ -21,7 +21,8 @@
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Quantity On Hand</th>
-                                <th>ItemNotes</th>
+                                <th>Item Notes</th>
+                                <th>Tag</th>
                                 @if (User.IsInRole("Manager"))
                                 {
                                     <th></th>
@@ -35,6 +36,7 @@
                             <td>@item.Price</td>
                             <td>@item.QuantityOnHand</td>
                             <td>@item.ItemNotes</td>
+                            <td>@item.Tag</td>
                             @if (User.IsInRole("Manager"))
                             {
                                 <td>@Html.ActionLink("Edit", "Edit", "Inventory", new { id = item.ItemId }, new { @class = "btn btn-primary" })</td>
