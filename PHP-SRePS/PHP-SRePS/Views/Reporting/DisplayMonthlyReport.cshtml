@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Reporting Page";
+}
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="jumbotron">
+        <h3>Monthly Sales Report</h3>
+        <hr />
+        <h4>Displaying Month: 2019</h4>
+        <li>@Html.ActionLink("Show previous month", "DisplayMonthlyReport", "Reporting", new { month = 9 }, null)</li>
+        <li>@Html.ActionLink("Show next month", "DisplayMonthlyReport", "Reporting", new { month = 11 }, null)</li>
+        <form>
+            <fieldset>
+                <fieldset>
+                    <p>
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Item ID</th>
+                                <th>Item Code</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>Date</th>
+                                <th>Notes</th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.ItemId</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.TotalPrice</td>
+                                    <td>@item.Date</td>
+                                    <td>@item.Notes</td>
+                                </tr>
+                            }
+                        </table>
+                    </p>
+                </fieldset>
+            </fieldset>
+        </form>
+        @Html.ActionLink("Go Back", "Index", "Reporting", null, new { @class = "btn btn-primary" })
+    </div>
+    </div>
+</body>
+</html>
