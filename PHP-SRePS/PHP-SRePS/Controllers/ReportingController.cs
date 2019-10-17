@@ -1,4 +1,5 @@
 ﻿using PHP_SRePS.Models;
+using PHP_SRePS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,22 +25,36 @@ namespace PHP_SRePS.Controllers
         // GET: Inventory
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
-        public ActionResult DisplayMonthlyReport(int month)
+        public ActionResult DisplayMonthlyReport()
         {
-            if ((month >= 1) & (month <= 12))
-            {
-            }
-            else
-            {
-                month = 10;
-            }
+
             var sales = _context.SalesTransactions
-                                    .SqlQuery("SELECT * FROM SalesTransactions WHERE MONTH(Date)=", month)
-                                    .ToList();
-            //            var sales = _context.SalesTransactions.ToList();
+                .Where(s => s.Date.Month == 09)
+                .GroupBy(s => s.ItemId)
+                .Select(s => new { itemId = s.Key, Quantity = s.Count() }).ToList();
+
+            //.Select(q => new { itemId = q.Key, count = q.Count() }).ToList();
+
+            //var viewModel = new SalesReportingViewModel
+            //{
+            //    GroupedSalesHistory = sales.
+            //    Items = _context.Items.ToList()
+            //};
+
+            //if ((month >= 1) & (month <= 12))
+            //{
+            //}
+            //else
+            //{
+            //    month = 10;
+            //}
+            //var sales = _context.SalesTransactions
+            //                        .SqlQuery("SELECT * FROM SalesTransactions WHERE MONTH(Date)=", month)
+            //                        .ToList();
+            ////            var sales = _context.SalesTransactions.ToList();
 
             return View(sales);
         }

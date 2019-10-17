@@ -19,11 +19,8 @@
                         <table class="table table-bordered table-hover">
                             <tr>
                                 <th>Item ID</th>
-                                <th>Item Code</th>
                                 <th>Quantity</th>
-                                <th>Total Price</th>
-                                <th>Date</th>
-                                <th>Notes</th>
+                                <th>Total $</th>
                                 @if (User.IsInRole("Manager"))
                                 {
                                     <th></th>
@@ -32,12 +29,8 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.Id</td>
-                                    <td>@item.ItemId</td>
                                     <td>@item.Quantity</td>
                                     <td>@item.TotalPrice</td>
-                                    <td>@item.Date</td>
-                                    <td>@item.Notes</td>
 
                                     @if (User.IsInRole("Manager"))
                                     {
