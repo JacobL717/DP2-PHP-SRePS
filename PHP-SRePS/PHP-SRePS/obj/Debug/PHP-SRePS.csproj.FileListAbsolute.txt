@@ -491,7 +491,6 @@ C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Mig
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.ChangeItemIdToInt.resources
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP_SRePS.Migrations.AddTagPropertyToItemModel.resources
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP-SRePS.csproj.GenerateResource.cache
-C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\obj\Debug\PHP-SRePS.csproj.CoreCompileInputs.cache
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\bin\SqlServerTypes\x64\msvcr120.dll
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\JakeL\Desktop\DP2-PHP-SRePS\PHP-SRePS\PHP-SRePS\bin\SqlServerTypes\x86\msvcr120.dll
