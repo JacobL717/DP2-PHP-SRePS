@@ -1,4 +1,5 @@
-﻿using PHP_SRePS.Models;
+﻿using Microsoft.Reporting.WebForms;
+using PHP_SRePS.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace PHP_SRePS.Controllers
     public class ReportingController : Controller
     {
         private ApplicationDbContext _context;
+        
+        
 
         public ReportingController()
         {
@@ -29,17 +32,11 @@ namespace PHP_SRePS.Controllers
 
         public ActionResult DisplayMonthlyReport(int month)
         {
-            if ((month >= 1) & (month <= 12))
-            {
-            }
-            else
-            {
-                month = 10;
-            }
             var sales = _context.SalesTransactions
-                                    .SqlQuery("SELECT * FROM SalesTransactions WHERE MONTH(Date)=", month)
+                                    .SqlQuery("SELECT * FROM SalesTransactions WHERE MONTH(Date)=" + @month)
                                     .ToList();
             //            var sales = _context.SalesTransactions.ToList();
+            
 
             return View(sales);
         }
@@ -49,5 +46,47 @@ namespace PHP_SRePS.Controllers
 
             return View(items);
         }
+
+        public ActionResult ReportList()
+        {
+            return View(_context.SalesTransactions.ToList());
+        }
+        
+        public ActionResult Reports(string ReportType)
+        {
+            LocalReport localreport = new LocalReport();
+            localreport.ReportPath = Server.MapPath("~/Reports/SalesReport.rdlc");
+
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "SalesDataSet";
+            reportDataSource.Value = _context.SalesTransactions.ToList();
+            localreport.DataSources.Add(reportDataSource);
+            string reportType = ReportType;
+            string mimeType;
+            string encoding;
+            string FileNameExtention;
+            if (reportType == "Excel")
+            {
+                FileNameExtention = "xlsx";
+            }
+            if (reportType == "Word")
+            {
+                FileNameExtention = "docx";
+            }
+            else
+            {
+                FileNameExtention = "jpg";
+            }
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedByte;
+            renderedByte = localreport.Render(reportType, "", out mimeType, out encoding, out FileNameExtention, out streams, out warnings);
+            Response.AddHeader("content-disposition", "attachment;filename= sales_report." + FileNameExtention);
+            return File(renderedByte, FileNameExtention);
+           
+        }
+   
     }
+>>>>>>> 33326c49d53b8444e3dbc442a53baab041e131d0
 }

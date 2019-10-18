@@ -9,12 +9,12 @@
     <div class="jumbotron">
         <h3>Monthly Sales Report</h3>
         <hr />
-        <h4>Month: June 2019</h4>
+        <h4>Displaying Month: 2019</h4>
+        <li>@Html.ActionLink("Show previous month", "DisplayMonthlyReport", "Reporting", new { month = 9 }, null)</li>
+        <li>@Html.ActionLink("Show next month", "DisplayMonthlyReport", "Reporting", new { month = 11 }, null)</li>
         <form>
             <fieldset>
                 <fieldset>
-                    <legend>Inventory List</legend>
-
                     <p>
                         <table class="table table-bordered table-hover">
                             <tr>
@@ -24,10 +24,6 @@
                                 <th>Total Price</th>
                                 <th>Date</th>
                                 <th>Notes</th>
-                                @if (User.IsInRole("Manager"))
-                                {
-                                    <th></th>
-                                }
                             </tr>
                             @foreach (var item in Model)
                             {
@@ -38,12 +34,6 @@
                                     <td>@item.TotalPrice</td>
                                     <td>@item.Date</td>
                                     <td>@item.Notes</td>
-
-                                    @if (User.IsInRole("Manager"))
-                                    {
-                                        <td>@Html.ActionLink("Edit", "Edit", "Inventory", new { id = item.ItemId }, new { @class = "btn btn-primary" })</td>
-                                        <td>@Html.ActionLink("Delete", "Delete", "Inventory", new { id = item.ItemId }, new { @class = "btn btn-danger" })</td>
-                                    }
                                 </tr>
                             }
                         </table>
@@ -51,8 +41,7 @@
                 </fieldset>
             </fieldset>
         </form>
-        @Html.ActionLink("Go Back", "Index", "Inventory", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Go Back", "Index", "Reporting", null, new { @class = "btn btn-primary" })
     </div>
     </div>
-</body>
 </html>
