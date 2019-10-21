@@ -64,17 +64,52 @@ namespace PHP_SRePS.Controllers
 
                 // Pass the selected month back to the view in order to use it for
                 // the "
-                Month = month
+                Month = month, 
+
+                SearchCriteria = new CustomReporting()
+                {
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
+                    Item = new Item()
+                }
             };
 
 
             return View(viewModel);
         }
-        public ActionResult DisplayMonthlyReport_old()
+       
+        [HttpPost]
+        public ActionResult Custom(ReportingSummaryViewModel summary)
         {
-            var items = _context.Items.ToList();
+            var sales = _context.SalesTransactions
+                .Where(s => s.Date >= summary.SearchCriteria.StartDate && s.Date <= summary.SearchCriteria.EndDate)
+                .GroupBy(s => s.ItemId)
 
-            return View(items);
+                .Select(s => new ReportingItemSummary
+                {
+                    ItemId = s.Key,
+                    Quantity = s.Sum(i => i.Quantity),
+                    TotalPrice = s.Sum(i => i.TotalPrice)
+                }).ToList();
+
+            var viewModel = new ReportingSummaryViewModel
+            {
+                ItemSummaries = sales,
+                Items = _context.Items.ToList(),
+
+                // -1 means that the reporting is a custom date range, not a single month
+                Month = -1,
+
+                SearchCriteria = new CustomReporting()
+                {
+                    StartDate = summary.SearchCriteria.StartDate,
+                    EndDate = summary.SearchCriteria.EndDate,
+                    Item = summary.SearchCriteria.Item
+                }
+            };
+
+
+            return View("DisplayMonthlyReport", viewModel);
         }
 
         public ActionResult ReportList()

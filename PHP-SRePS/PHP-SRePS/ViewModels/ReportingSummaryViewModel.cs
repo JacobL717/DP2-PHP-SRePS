@@ -11,5 +11,6 @@ namespace PHP_SRePS.ViewModels
         public IEnumerable<ReportingItemSummary> ItemSummaries { get; set; }
         public IEnumerable<Item> Items { get; set; }
         public int Month { get; set; }
+        public CustomReporting SearchCriteria { get; set; }
     }
 }

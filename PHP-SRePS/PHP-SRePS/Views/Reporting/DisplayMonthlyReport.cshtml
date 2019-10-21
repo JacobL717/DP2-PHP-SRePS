@@ -4,22 +4,43 @@
     ViewBag.Title = "Reporting Page";
 }
 
-@{ 
-    string monthName = new DateTime(2019, Model.Month, 1)
+@{
+    string monthName;
+
+    if(Model.Month < 0)
+    {
+        String start = Model.SearchCriteria.StartDate.ToString("dd MMM yyyy");
+        String end = Model.SearchCriteria.EndDate.ToString("dd MMM yyyy");
+
+        monthName = start + " to " + end;
+    }
+    else
+    {
+        monthName = new DateTime(2019, Model.Month, 1)
         .ToString("MMMM");
+    }
 }
 
 <!DOCTYPE html>
 <html>
 <body>
     <div class="jumbotron">
-        <h3>Monthly Sales Report</h3>
+        <h3>Monthly Sales Report - @monthName</h3>
         <hr />
-        <h4>Displaying Month: @monthName</h4>
-        <ul>
-            <li>@Html.ActionLink("Show previous month", "DisplayMonthlyReport", "Reporting", new { month = Model.Month - 1 }, null)</li>
-            <li>@Html.ActionLink("Show next month", "DisplayMonthlyReport", "Reporting", new { month = Model.Month + 1 }, null)</li>
-        </ul>
+
+        @using (Html.BeginForm("Custom", "Reporting", FormMethod.Post, new { @class = "form-inline hide", @id = "form" }))
+        {
+            <div class="form-group ml">
+                @Html.LabelFor(m => m.SearchCriteria.StartDate)
+                @Html.EditorFor(m => m.SearchCriteria.StartDate, new { htmlAttributes = new { @class = "datepicker form-control", @id = "start" } })
+            </div>
+            <div class="form-group ml">
+                @Html.LabelFor(m => m.SearchCriteria.EndDate)
+                @Html.EditorFor(m => m.SearchCriteria.EndDate, new { htmlAttributes = new { @class = "datepicker form-control", @id = "end" } })
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        }
+
         <form>
             <fieldset>
                 <fieldset>
@@ -32,7 +53,7 @@
                                 <th>Quantity Sold</th>
                                 <th>Total Value</th>
                             </tr>
-                            @foreach(var itemSummary in Model.ItemSummaries)
+                            @foreach (var itemSummary in Model.ItemSummaries)
                             {
                                 <tr>
                                     <td>@itemSummary.ItemId</td>
@@ -48,6 +69,48 @@
             </fieldset>
         </form>
         @Html.ActionLink("Go Back", "Index", "Reporting", null, new { @class = "btn btn-primary" })
+
+        <!--Should not be able to +- a month if the date range is custom-->
+        @if (Model.Month > 1)
+        {
+            @Html.ActionLink("Previous Month", "DisplayMonthlyReport", "Reporting", new { month = Model.Month - 1 }, new { @class = "btn btn-success margin-right" })
+            @Html.ActionLink("Next Month", "DisplayMonthlyReport", "Reporting", new { month = Model.Month + 1 }, new { @class = "btn btn-success" })
+            <button type="submit" class="btn btn-info" id="custom-btn">Custom Search</button>
+        }
     </div>
 </body>
 </html>
+
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+@section scripts {
+
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({ dateFormat: 'dd-M-yy' });
+
+            var date = new Date();
+
+            var startDate = $("#start").val();
+
+            // if it's greater than 15, then it's a DateTime not a Date, therefore we want to trim it
+            if (startDate.length > 15) {
+
+                var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+                var strDate = date.getDate() + "-" + (months[date.getMonth()]) + "-" + date.getFullYear();
+
+                $(".datepicker").val(strDate);
+            }
+        });
+
+        $("#custom-btn").click(function () {
+            $("#custom-btn").hide();
+            $("#form").removeClass("hide");
+        });
+    </script>
+
+
+}
