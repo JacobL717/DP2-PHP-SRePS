@@ -4,6 +4,10 @@
     ViewBag.Title = "Reporting Page";
 }
 
+@{ 
+    string monthName = new DateTime(2019, Model.Month, 1)
+        .ToString("MMMM");
+}
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +15,7 @@
     <div class="jumbotron">
         <h3>Monthly Sales Report</h3>
         <hr />
-        <h4>Displaying Month: 2019</h4>
+        <h4>Displaying Month: @monthName</h4>
         <ul>
             <li>@Html.ActionLink("Show previous month", "DisplayMonthlyReport", "Reporting", new { month = Model.Month - 1 }, null)</li>
             <li>@Html.ActionLink("Show next month", "DisplayMonthlyReport", "Reporting", new { month = Model.Month + 1 }, null)</li>
