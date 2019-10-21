@@ -1,5 +1,4 @@
 ﻿using Microsoft.Reporting.WebForms;
-using Microsoft.Reporting.WinForms;
 using PHP_SRePS.Models;
 using PHP_SRePS.ViewModels;
 using System;
@@ -77,7 +76,42 @@ namespace PHP_SRePS.Controllers
 
             return View(viewModel);
         }
-       
+
+        public ActionResult Predictions()
+        {
+            var startDate = DateTime.Now
+
+                // prediction is based off average of last 3 months sales data
+                .AddMonths(-3)
+
+                // remove the current month as it is not complete
+                .AddDays(-DateTime.Now.Day);
+
+            var endDate = DateTime.Now
+                .AddDays(-DateTime.Now.Day);
+
+            var prediction = _context.SalesTransactions
+                .Where(s => s.Date >= startDate && s.Date <= endDate)
+                .GroupBy(s => s.ItemId)
+
+                .Select(s => new PredictionItemSummary
+                {
+                    ItemId = s.Key,
+                    Average = s.Sum(i => i.Quantity)/3,
+                    ExpectedSales = s.Sum(i => i.TotalPrice)/3
+                }).ToList();
+
+            var viewModel = new PredictionSummaryViewModel
+            {
+                PredictionSummary = prediction,
+
+                Items = _context.Items.ToList()
+            };
+
+
+            return View("PredictionReport", viewModel);
+        }
+
         [HttpPost]
         public ActionResult Custom(ReportingSummaryViewModel summary)
         {

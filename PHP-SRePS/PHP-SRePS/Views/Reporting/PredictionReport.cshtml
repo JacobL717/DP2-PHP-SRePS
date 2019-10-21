@@ -1,0 +1,44 @@
+﻿@model PHP_SRePS.ViewModels.PredictionSummaryViewModel
+
+@{
+    ViewBag.Title = "Reporting Page";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="jumbotron">
+        <h3>Next Month Prediction Report</h3>
+        <hr />
+
+        <form>
+            <fieldset>
+                <fieldset>
+                    <p>
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Item ID</th>
+                                <th>Item Name</th>
+                                <th>Unit Price</th>
+                                <th>Predicted Units</th>
+                                <th>Predicted Sales Value</th>
+                            </tr>
+                            @foreach (var prediction in Model.PredictionSummary)
+                            {
+                                <tr>
+                                    <td>@prediction.ItemId</td>
+                                    <td>@Model.Items.First(i => i.ItemId == prediction.ItemId).Name</td>
+                                    <td>$@Model.Items.First(i => i.ItemId == prediction.ItemId).Price.ToString("0.00")</td>
+                                    <td>@prediction.Average</td>
+                                    <td>$@prediction.ExpectedSales.ToString("0.00")</td>
+                                </tr>
+                            }
+                        </table>
+                    </p>
+                </fieldset>
+            </fieldset>
+        </form>
+        @Html.ActionLink("Go Back", "Index", "Reporting", null, new { @class = "btn btn-primary" })
+    </div>
+</body>
+</html>
